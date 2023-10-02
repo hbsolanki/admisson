@@ -27,14 +27,13 @@ class Main{
                                 sc.nextLine();
                                 System.out.println("Enter password : ");
                                 String pass=sc.nextLine();
-                                for(int k=0;k<allStudent.size();k++){
-                                    Student s=allStudent.get(k);
-                                    if(s.studentId==sid && s.pass==pass){
-                                        student(s);
-                                        break;
-                                    }
+                                System.out.println(pass);
+                                Student s=checkIdPass(sid, pass);
+                                if(s!=null){
+                                    student(s);
+                                }else{
+                                    System.out.println("Wrong id & pass");
                                 }
-                                System.out.println("Wrong...");
                             }
                         break;
 
@@ -53,6 +52,14 @@ class Main{
         int ch=sc.nextInt();
         if(ch==1){
             ACPC.choiceFilling(s, allCollage);
+            student(s);
+        }
+        if(ch==2){
+            ACPC.getAddmissionLetter(s, allStudent, allCollage);
+            student(s);
+        }
+        if(ch==3){
+            return;
         }
     }
 
@@ -60,9 +67,20 @@ class Main{
         System.out.println("(1)Add Collage (2)Exit");
         int ch=sc.nextInt();
         if(ch==1){
+            sc.nextLine();
             allCollage.add(ACPC.addCollage());
         }else{
             return;
         }
+    }
+
+    public static Student checkIdPass(int sid,String password){
+        for(int k=0;k<allStudent.size();k++){
+            Student s=allStudent.get(k);
+            if(s.studentId==sid && s.pass.equals(password)){
+                return s;
+            }
+        }
+        return null;
     }
 }

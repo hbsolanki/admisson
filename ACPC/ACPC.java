@@ -9,6 +9,7 @@ public class ACPC {
     static Scanner sc=new Scanner(System.in);
 
     public static Student addStudent(){
+        sc.nextLine();
         System.out.print("Enter Student Name : ");
         String name=sc.nextLine();
         System.out.print("set Password : ");
@@ -58,7 +59,7 @@ public class ACPC {
             selectCollage.collageInfo();
             System.out.print("Enter cource Number : ");
             int cNum=sc.nextInt();
-            Collage.Cource selectCource=selectCollage.allCources.get(num-1);
+            Collage.Cource selectCource=selectCollage.allCources.get(cNum-1);
             selection.put(selectCource,selectCollage);
             System.out.println();
             System.out.println("Add More Collage=1 or Exit=0");
@@ -80,12 +81,18 @@ public class ACPC {
     }
 
     public static void getAddmissionLetter(Student s,ArrayList<Student> allStudents,ArrayList<Collage> allCollages){
-        result(allStudents, allCollages);
-        if(s.cource!=null && s.collage!=null){
-            System.out.println("Name : "+s.name);
-            System.out.println("id : "+s.studentId);
-            System.out.println("Collage : "+s.collage);
-            System.out.println("Cource : "+s.cource);
+        if(s.selection!=null){
+            result(allStudents, allCollages);
+            if(s.cource!=null && s.collage!=null){
+                System.out.println("Name : "+s.name);
+                System.out.println("id : "+s.studentId);
+                System.out.println("Collage : "+s.collage);
+                System.out.println("Cource : "+s.cource);
+            }else{
+                System.out.println("Sorry.. You are not eligible for any collage");
+            }
+        }else{
+            System.out.println("Your choice Filling is empty");
         }
     }
 
