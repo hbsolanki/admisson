@@ -25,7 +25,7 @@ class Main{
                                 System.out.print("Enter Student id : ");
                                 int sid=sc.nextInt();
                                 sc.nextLine();
-                                System.out.println("Enter password : ");
+                                System.out.print("Enter password : ");
                                 String pass=sc.nextLine();
                                 System.out.println(pass);
                                 Student s=checkIdPass(sid, pass);

@@ -86,8 +86,8 @@ public class ACPC {
             if(s.cource!=null && s.collage!=null){
                 System.out.println("Name : "+s.name);
                 System.out.println("id : "+s.studentId);
-                System.out.println("Collage : "+s.collage);
-                System.out.println("Cource : "+s.cource);
+                System.out.println("Collage : "+s.collage.name);
+                System.out.println("Cource : "+s.cource.name);
             }else{
                 System.out.println("Sorry.. You are not eligible for any collage");
             }
@@ -118,9 +118,13 @@ public class ACPC {
                 for(int n=0;n<pq.size();n++){
                     Student s=pq.poll();
                     if(s.selection.containsKey(cor)){
-                        s.collage=c;
-                        s.cource=cor;
-                        cor.seats-=1;
+                        if(cor.seats>0){
+                            s.collage=c;
+                            s.cource=cor;
+                            cor.seats-=1;
+                        }else{
+                            pq.add(s);
+                        }
                     }else{
                         pq.add(s);
                     }
